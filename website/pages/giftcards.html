@@ -1,0 +1,18 @@
+<div class="page" ng-if="main.loading">
+	<p class="loader">Loading... Please wait...</p>
+</div>
+<div class="page" ng-if="!main.loading">
+	<div class="page__description">
+		<h1>Gift Cards</h1>
+		<h2>Choose your selection from our diverse catalog of {{core.currency_code}} gift cards.</h2>
+	</div>
+	<div class="page__grid">
+		<div class="grid">
+			<ul class="grid__list">
+				<li class="grid__item" data-selected-currency="{{core.currency_code}}" ng-repeat="brand in main.brands | filter : core.currency_code" ng-click="main.onDetails(brand)">
+					<img class="grid__image" ng-src="{{brand.image_url}}" data-brand-currency="{{ brand.fund_currencyisocode }}" />
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

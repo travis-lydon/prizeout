@@ -1,0 +1,84 @@
+.card {
+    .flexbox();
+
+    > .card__image {
+        > img {
+            @media only screen and (max-width: 48em) {
+                width: @image-width-mobile;
+            }
+        }
+    }
+
+    @media only screen and (max-width: 48em) {
+        flex-flow: column;
+        align-items: stretch;
+    }
+
+    > * {
+        flex: 1;
+    }
+
+    &__list {
+       > * {
+            flex: 1;
+        }
+    }
+
+    &__item {
+        .flexbox();
+
+        &:not(:last-child) {
+            margin-bottom: 2rem;
+        }
+
+        padding-bottom: 2rem;
+        border-bottom: 1px solid @border-color;
+
+        @media only screen and (max-width: 37.5em) {
+            flex-flow: column;
+            align-items: stretch;
+            text-align: center;
+        }
+    }
+
+    &__image {
+        .flexbox();
+
+        border: 1px solid @border-color;
+        padding: 1rem;
+
+        > img {
+            width: @image-width;
+            height: auto;
+
+             @media only screen and (max-width: 37.5em) {
+                width: @image-width-mobile;
+            }
+        }
+    }
+
+    &__form {
+        margin-left: 2.25rem;
+
+        @media only screen and (max-width: 48em) {
+            margin-top: 2.25rem;
+            margin-left: 0;
+        }
+    }
+
+    &__meta {
+        margin-left: 2.25rem;
+        font-size: 1.25rem;
+
+        @media only screen and (max-width: 37.5em) {
+            margin-left: 0;
+            margin-top: 2.25rem;
+        }
+
+        > * {
+            &:not(:last-child) {
+                margin-bottom: .5rem;
+            }
+        }
+    }
+}

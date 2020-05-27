@@ -1,0 +1,55 @@
+<div class="page">
+    <div class="page__back">
+        <a ng-click="main.onBrowse()" class="no-text-link"><i class="far fa-arrow-alt-circle-left"></i></a>
+        <span>Back to browse</span>
+    </div>
+    <div class="page__description">
+        <h1>{{ core.selected_brand.name }}</h1>
+        <h2>{{ core.selected_brand.description }}</h2>
+    </div>
+    <div class="page__card">
+        <div class="card">
+            <div class="card__image">
+                <img ng-src="{{ core.selected_brand.image_url }}" alt="{{ core.selected_brand.name }}" />
+            </div>
+            <div class="card__form">
+                <form class="form">
+                    <div class="form__row">
+                        <label class="form__label" for="card_value">Value <small ng-if="core.selected_brand.variable_price">${{ core.selected_brand.min_price_in_cents / 100 }} - ${{ core.selected_brand.max_price_in_cents / 100 }}</small></label>
+                        <!-- if min/max -->
+                        <input ng-if="core.selected_brand.variable_price" ng-model="main.gift_card_value" ng-change="main.checkValue()" class="form__input" type="number" id="card_value" name="card-value" min="{{ core.selected_brand.min_price_in_cents / 100 }}" max="{{ core.selected_brand.max_price_in_cents / 100 }}" placeholder="Enter a value between {{ core.selected_brand.min_price_in_cents / 100 }} - {{ core.selected_brand.max_price_in_cents / 100 }}" />
+                        <!-- if options -->
+                        <select ng-if="!core.selected_brand.variable_price" ng-model="main.gift_card_value" ng-change="main.checkValue()" id="card_value" class="form__select">
+                            <option value="">Select card value</option>
+                            <option ng-repeat="gift_card_value in core.selected_brand.allowed_prices_in_cents" value="{{gift_card_value/100}}">${{gift_card_value/100}}</option>
+                        </select>
+                    </div>
+                    <div class="form__row">
+                        <label class="form__label" for="quantity">Quantity</label>
+                        <input ng-model="main.gift_card_quantity" ng-change="main.checkQuantity()" class="form__input" type="number" id="quantity" name="quantity" min="1" max="5" placeholder="Enter quantity" />
+                    </div>
+                    <button type="button" class="js-add-to-cart button button--primary button--disabled" disabled ng-click="main.addToCart()">
+                        Add to cart
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="js-feedback feedback">
+            <div class="js-success feedback__success">
+                <p><i class="fas fa-check-circle feedback__status"></i> Successfully added! Would you like to go to <a ng-click="main.onCart()">cart</a> or <a ng-click="main.onCheckout()">checkout</a>?</p>
+            </div>
+            <div class="js-error feedback__error feedback__status">
+                <p><i class="fas fa-exclamation-circle"></i> Could not add to cart. Please try again.</p>
+            </div>
+            <i class="far fa-times-circle feedback__close js-close"></i>
+        </div>
+    </div>
+    <div class="page__disclaimer" ng-if="core.selected_brand.disclaimer">
+        <small>
+            <strong>Disclaimer</strong>
+        </small>
+        <small>
+            {{ core.selected_brand.disclaimer }}
+        </small>
+    </div>
+</div>

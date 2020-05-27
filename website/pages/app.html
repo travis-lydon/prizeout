@@ -1,0 +1,91 @@
+<div ng-if="core.page!=='index'" class="preheader">
+	<div class="preheader__inner">
+		<ul class="preheader__list">
+			<li class="preheader__item">
+				{{core.user_email}}&nbsp;|&nbsp;
+			</li>
+			<li class="preheader__item">
+				Currency: {{core.currency_code}}&nbsp;|&nbsp;
+			</li>
+			<li class="preheader__item"><a ng-click="main.onEdit()">Edit</a></li>
+		</ul>
+	</div>
+</div>
+
+<header ng-if="core.page!=='index'" class="header">
+	<div class="header__inner">
+		<div class="header__logo">
+			<a class="no-text-link" ng-click="main.onBrowse()"><img ng-src="../assets/logo.png" alt="Prizeout" /></a>
+		</div>
+		<div class="header__utility">
+			<span>Remaining Balance: $<span class="js-balance">{{ core.user_balance / 100 }}</span></span>
+			<div class="header__cart">
+				<a class="no-text-link" ng-click="main.toggleFlyout()">
+					<i class="fas fa-shopping-cart"></i>
+				</a>
+				<span class="js-cart-quantity">0</span>
+				<span>items</span>
+				<div class="flyout">
+					<div class="flyout__content">
+						<header class="flyout__header">
+							<h4>My Cart, <span class="js-cart-quantity">0</span> items</h4>
+						</header>
+						<div class="flyout__body">
+							<div ng-if="!core.selected_brand.name">
+								<p>You have nothing in your cart yet.</p>
+							</div>
+							<div ng-if="core.selected_brand.name">
+								<ul class="flyout__list">
+									<li class="flyout__item">
+										<div class="flyout__image">
+											<img ng-src="{{ core.selected_brand.image_url }}" alt="{{ core.selected_brand.name }}" />
+										</div>
+										<div class="flyout__meta">
+											<p><strong>{{core.currency_code}} $<span class="js-gift-card-value"></span></strong></p>
+											<p>{{ core.selected_brand.name }}</p>
+											<p>Qty: <span class="js-gift-card-quantity"></span></p>
+										</div>
+									</li>
+								</ul>
+								<div class="flyout__details">
+									<p>My Cart Total: $<span class="js-cart-total"><span class="js-gift-card-value"></span></span></p>
+									<p>Remaining Balance: $<span class="js-balance">{{ core.user_balance / 100 }}</span></p>
+								</div>
+								<div class="flyout__buttons">
+									<button class="button button--secondary" ng-click="main.onCart()">Go to cart</button>
+									<button class="button button--primary" ng-click="main.onCheckout()">Go to checkout</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
+
+<main ng-if="core.page!=='index'" class="main" role="main">
+	<div class="main__inner">
+		<!-- Loads the right directive based on the page to display -->
+		<!-- The giftcard page, listing the available giftcards -->
+		<section app-giftcards ng-if="core.page=='giftcards'"></section>
+
+		<!-- The giftcard details page, listing the giftcard details -->
+		<section app-details ng-if="core.page=='details'"></section>
+
+		<!-- The cart page -->
+		<section app-cart ng-if="core.page=='cart'"></section>
+
+		<!-- The checkout page -->
+		<section app-checkout ng-if="core.page=='checkout'"></section>
+	</div>
+</main>
+
+<!-- Index page, the default, asking the user to select the currency to use -->
+<main app-index ng-if="core.page=='index'" role="main"></main>
+
+<footer ng-if="core.page!=='index'" class="footer" role="contentinfo">
+	<div class="footer__inner">
+		<p>&copy; 2020, Prizeout. All rights reserved.</p>
+	</div>
+</footer>

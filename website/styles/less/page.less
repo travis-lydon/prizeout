@@ -1,0 +1,74 @@
+.page {
+    position: relative;
+    margin-bottom: @section-margin;
+
+    &__description {
+        &:extend(.partial-width);
+
+        text-align: center;
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+    }
+
+    &__card {
+        &:extend(.partial-width);
+
+        position: relative;
+    }
+
+    &__back {
+        .flexbox(@justify-content: flex-start);
+
+        position: absolute;
+        top: -3rem;
+
+        @media only screen and (max-width: 48em) {
+            position: static;
+            margin-bottom: 2rem;
+            justify-content: center;
+        }
+
+        i {
+            font-size: 1.5rem;
+            margin-right: .5rem;
+        }
+    }
+
+    &__details {
+        .flexbox(@flex-flow: column);
+
+        margin-bottom: 1.5rem;
+
+        h3 {
+            margin-bottom: 2rem;
+        }
+    }
+
+    &__buttons {
+        .flexbox();
+
+        @media only screen and (max-width: 37.5em) {
+            flex-flow: column;
+            align-items: stretch;
+        }
+
+        .button {
+            margin: 0 1rem;
+
+            @media only screen and (max-width: 37.5em) {
+                margin: .5rem 0;
+            }
+        }
+    }
+
+    &__disclaimer {
+        margin-top: @section-margin;
+
+        small:first-child {
+            display: block;
+            margin-bottom: .5rem;
+        }
+    }
+}

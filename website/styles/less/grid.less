@@ -1,0 +1,29 @@
+.grid {
+    overflow: hidden;
+
+    &__list {
+        .flexbox(@flex-flow: row wrap);
+
+        margin: -1em;
+    }
+
+    &__item {
+        .flexbox();
+        .border-radius();
+        .transition();
+
+        border: 1px solid @border-color;
+        padding: 1em;
+        margin: 1em;
+        flex: 1;
+        cursor: pointer;
+
+        &:hover {
+            .box-shadow();
+        }
+    }
+
+    &__image {
+        width: @image-width;
+    }
+}

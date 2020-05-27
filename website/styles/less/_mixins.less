@@ -1,0 +1,49 @@
+.border-radius(@radius: @border-radius) {
+    -webkit-border-radius: @radius;
+    -moz-border-radius: @radius;
+    border-radius: @radius;
+}
+
+.box-shadow(@box-shadow: @box-shadow) {
+    -webkit-box-shadow: @box-shadow;
+    -moz-box-shadow: @box-shadow;
+    box-shadow: @box-shadow;
+}
+
+.transition(@property: all; @duration: .2s; @timing: cubic-bezier(.10, .10, .25, .90);) {
+    -webkit-transition-property: @property;
+    -moz-transition-property: @property;
+    -o-transition-property: @property;
+    transition-property: @property;
+    -webkit-transition-duration: @duration;
+    -moz-transition-duration: @duration;
+    -o-transition-duration: @duration;
+    transition-duration: @duration;
+    -webkit-transition-timing-function: @timing;
+    -moz-transition-timing-function: @timing;
+    -o-transition-timing-function: @timing;
+    transition-timing-function: @timing;
+}
+
+.flexbox(@display: flex; @flex-flow: row nowrap; @align-items: center; @justify-content: center;) {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-flow: @flex-flow;
+    flex-flow: @flex-flow;
+    -webkit-box-align: @align-items;
+    -ms-flex-align: @align-items;
+    align-items: @align-items;
+    -webkit-box-pack: @justify-content;
+    -ms-flex-pack: @justify-content;
+    justify-content: @justify-content;
+    display: flex;
+}
+
+.icon(@content) {
+    font-family: "Font Awesome 5 Free";
+    font-style: normal;
+    font-variant: normal;
+    display: inline-block;
+    position: absolute;
+    content: @content;
+}

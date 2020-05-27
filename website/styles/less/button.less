@@ -1,0 +1,73 @@
+.button {
+    .border-radius();
+
+    border: none;
+    box-shadow: none;
+    text-shadow: none;
+    cursor: pointer;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    text-transform: uppercase;
+    font-size: inherit;
+    font-weight: 700;
+    width: inherit;
+    height: 2.5rem;
+    line-height: 1;
+    letter-spacing: .5px;
+    position: relative;
+
+    &:before {
+        .icon('\f054');
+
+        right: 1rem;
+    }
+
+    &--left {
+        padding: 0.5rem 1rem 0.5rem 2.5rem;
+
+        &:before {
+            .icon('\f053');
+
+            left: 1rem;
+            right: unset;
+        }
+    }
+
+    &--primary {
+        background-color: @primary-button-background-color;
+        color: @primary-button-color;
+
+        &:hover {
+            background-color: @primary-button-hover-background-color;
+        }
+
+        &.button--disabled {
+            &:hover {
+                background-color: @primary-button-background-color;
+            }
+        }
+    }
+
+    &--secondary {
+        background-color: @secondary-button-background-color;
+        color: @secondary-button-color;
+        border: 1px solid @secondary-button-border-color;
+
+        &:hover {
+            color: @secondary-button-hover-border-color;
+            border-color: @secondary-button-hover-border-color;
+        }
+
+        &.button--disabled {
+            &:hover {
+                background-color: @secondary-button-background-color;
+                color: @secondary-button-color;
+                border: 1px solid @secondary-button-border-color;
+            }
+        }
+    }
+
+    &--disabled {
+        opacity: .5;
+        cursor: not-allowed;
+    }
+}

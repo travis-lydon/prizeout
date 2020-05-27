@@ -1,0 +1,36 @@
+<div class="page">
+    <div class="page__description">
+        <h1>My Cart</h1>
+        <h2>You have <span class="js-cart-quantity">0</span> items in your cart.</h2>
+    </div>
+    <div class="page__card">
+        <div class="card">
+            <ul class="card__list">
+                <li class="card__item">
+                    <div class="card__image">
+                        <img ng-src="{{core.selected_brand.image_url}}" alt="{{core.selected_brand.name}}" />
+                    </div>
+                    <div class="card__meta">
+                        <!-- update amount here from add to cart -->
+                        <p><strong>{{core.currency_code}} $<span class="js-gift-card-value">0</span></strong></p>
+                        <p>{{core.selected_brand.name}}</p>
+                        <!-- update quantity here from add to cart -->
+                        <p>Quantity: <span class="js-gift-card-quantity">0</span></p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="page__details">
+        <h3>My Cart Total: $<span class="js-cart-total">0</span></h3>
+        <p>You have a remaining balance of $<span class="js-balance">{{ core.user_balance / 100 }}</span>, what would you like to do?</p>
+    </div>
+    <div class="page__buttons">
+        <button class="button button--secondary button--left" type="button" ng-click="main.onBrowse()">
+            Continue Shopping
+        </button>
+        <button class="button button--primary" type="button" ng-click="main.onCheckout()">
+            Go to checkout
+        </button>
+    </div>
+</div>

@@ -1,0 +1,49 @@
+.form {
+    .flexbox(@flex-flow: column; @align-items: stretch;);
+
+    small {
+        color: @body-text-color;
+    }
+
+    &__row {
+        .flexbox(@flex-flow: row wrap;);
+
+        > * {
+            width: 100%;
+        }
+
+        margin-bottom: 1.5em;
+    }
+
+    &__label {
+        color: @heading-text-color;
+        margin-bottom: .35em;
+    }
+
+    &__input {
+        .border-radius();
+
+        padding: 1em;
+        font-size: 1rem;
+        border: 1px solid @border-color;
+        color: @body-text-color;
+        padding: 0 1em;
+        height: 40px;
+
+        &::-webkit-input-placeholder {
+          opacity: .7;
+        }
+
+        &:-ms-input-placeholder {
+          opacity: .7;
+        }
+
+        &::placeholder {
+          opacity: .7;
+        }
+    }
+
+    &__select {
+        height: 40px;
+    }
+}

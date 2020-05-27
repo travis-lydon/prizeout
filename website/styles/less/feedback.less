@@ -1,0 +1,52 @@
+.feedback {
+    .box-shadow();
+    .border-radius();
+    .flexbox();
+    .transition(@duration: .4s);
+
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    width: 110%;
+    height: 120%;
+    top: -10%;
+    left: -5%;
+    background-color: rgba(255,255,255,.9);
+    padding: 2rem;
+    z-index: 997;
+    font-size: 1.2rem;
+
+    &--visible {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    &__status {
+        margin-right: .5rem
+    }
+
+    &__close,
+    &__success,
+    &__error {
+        display: none;
+    }
+
+    &__close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            color: @primary-accent-color;
+        }
+    }
+
+    &__success {
+        color: @success-color;
+    }
+
+    &__error {
+        color: @error-color;
+    }
+}

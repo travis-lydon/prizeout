@@ -1,0 +1,31 @@
+<div class="login" ng-if="main.loading">
+	<p class="loader">Loading... Please wait...</p>
+</div>
+<div class="login" ng-if="!main.loading">
+	<section class="login__background"></section>
+	<section class="login__details">
+		<div>
+			<div class="login__logo">
+				<img ng-src="../assets/logo.png" alt="Prizeout" />
+			</div>
+			<div class="login__form">
+				<form class="form">
+					<div class="form__row">
+						<label class="form__label" for="email">Email</label>
+						<input class="form__input" id="email" ng-model="main.user_email" type="email" placeholder="Enter your email address" />
+					</div>
+					<div class="form__row">
+						<label class="form__label" for="currency">Currency</label>
+						<select class="form__select" ng-model="main.selected_currency_code">
+	                    	<option value="">Select currency type</option>
+	                    	<option ng-repeat="currency_code in main.currency_codes" value="{{currency_code}}">{{currency_code}}</option>
+	                	</select>
+	                </div>
+					<button type="button" class="button button--primary" ng-click="main.onBrowse()" ng-if="main.selected_currency_code && main.user_email">
+						Login
+					</button>
+				</form>
+			</div>
+		</div>
+	</section>
+</div>

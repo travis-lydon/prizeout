@@ -1,0 +1,57 @@
+html {
+    @media only screen and (max-width: 48em) {
+        font-size: 90%;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+        font-size: 85%;
+    }
+}
+
+*[class*='__inner'] {
+    max-width: 75vw;
+    width: 90%;
+    margin: 0 auto;
+
+    @media only screen and (min-width: 90em) {
+        max-width: 60vw;
+    }
+
+    @media only screen and (max-width: 48em) {
+        max-width: 85vw;
+    }
+
+    @media only screen and (max-width: 37.5em) {
+        max-width: 100%;
+    }
+}
+
+main {
+    min-height: calc(100vh - 176px);
+}
+
+.main {
+    padding: @section-margin 0;
+}
+
+.loader {
+    text-align: center;
+}
+
+.partial-width {
+    width: 85%;
+    margin: 0 auto @section-margin;
+
+    @media only screen and (max-width: 48em) {
+        width: 100%;
+    }
+}
+
+.no-text-link {
+    text-decoration: none;
+    color: @secondary-accent-color;
+
+    &:hover {
+        color: @primary-accent-color;
+    }
+}
